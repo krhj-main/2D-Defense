@@ -8,17 +8,20 @@ using UnityEngine.EventSystems;
 /// 무기 타입별 데미지 설정
 /// </summary>
 /// 기본 무기들에 스플래쉬, 체인(튕기는) 무기 타입
+
+[System.Serializable]
 public class Weapon
 {
     public int price;
     public int damage;
     public int attackSpeed;
 }
-
+[System.Serializable]
 public class Splash : Weapon
 {
     public int splashDecreaseDamage;
 }
+[System.Serializable]
 public class Chain : Weapon
 {
     public int chainDecreaseDamage;
