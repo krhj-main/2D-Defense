@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    [SerializeField]    MonsterStat MM;
+    [SerializeField]    public MonsterStat MM;
 
     Rigidbody2D rig;
     Transform castleT;

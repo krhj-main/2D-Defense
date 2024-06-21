@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MM:
     monster_HP: 2000
-    monster_Speed: 200
+    monster_Speed: 100
     monster_regentime: 0
 --- !u!212 &2572949523358969402
 SpriteRenderer:

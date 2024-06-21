@@ -12,13 +12,34 @@ public class MonsterStat
 
 public class MobManager : MonoBehaviour
 {
+    static MobManager instance;
+
+    public static MobManager Instance
+    {
+        get => instance;
+    }
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            if (instance != this)
+            {
+                Destroy(this.gameObject);
+            }
+        }
+    }
     [SerializeField] GameObject[] monsters;
-    public MonsterStat type_1;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
