@@ -26,35 +26,9 @@ public class Chain : Weapon
 {
     public int chainDecreaseDamage;
 }
-public class GM : MonoBehaviour
+public class GM : Singleton<GM>
 {
     //게임매니저 스크립트, @ 오브젝트에 붙임
-
-    static GM instance;
-
-    public static GM Instance
-    {
-        get
-        {
-            return instance;
-        }
-    }
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            if (instance != this)
-            {
-                Destroy(this.gameObject);
-            }
-        }
-    }
 
     ///<summary>
     ///사용자 함수 및 변수 선언

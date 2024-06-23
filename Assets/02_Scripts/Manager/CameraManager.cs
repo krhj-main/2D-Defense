@@ -8,19 +8,8 @@ using UnityEngine.EventSystems;
 /// @ 오브젝트에 붙어있음
 
 
-public class CameraManager : MonoBehaviour
+public class CameraManager : Singleton<CameraManager>
 {
-    static CameraManager instance;
-
-    public static CameraManager Instance
-    {
-        get
-        {
-            return instance;
-        }
-    }
-
-
     Vector2 mousePos;
     // 마우스 클릭된 위치를 저장할 Vector2 객체
     bool isOnDrag;

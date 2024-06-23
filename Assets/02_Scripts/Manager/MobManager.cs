@@ -10,30 +10,9 @@ public class MonsterStat
     public float monster_regentime;
 }
 
-public class MobManager : MonoBehaviour
+public class MobManager : Singleton<MobManager>
 {
-    static MobManager instance;
-
-    public static MobManager Instance
-    {
-        get => instance;
-    }
-
-    void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            if (instance != this)
-            {
-                Destroy(this.gameObject);
-            }
-        }
-    }
+   
     [SerializeField] GameObject[] monsters;
     
     // Start is called before the first frame update

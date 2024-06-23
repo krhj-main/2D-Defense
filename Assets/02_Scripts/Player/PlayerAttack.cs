@@ -29,21 +29,10 @@ public class PlayerAttack : MonoBehaviour
             Debug.Log(hit.point);
             
             GameObject weapon_Arrow = Instantiate(arrow,muzzle.transform.position,Quaternion.Euler(muzzle.transform.eulerAngles));
-            
-
-            if (hit.collider != null)
-            {
-                GameObject gg = hit.collider.gameObject;
-                if (gg.CompareTag("Monster"))
-                {
-
-                }
-            }
         }
     }
     public void Piyoung(GameObject go, float speed)
     {
-        Vector3 newPos = new Vector3(mousePos.x,mousePos.y,0);
         go.GetComponent<Rigidbody2D>().AddForce(muzzle.transform.up * speed,ForceMode2D.Impulse);
     }
     /// <summary>
