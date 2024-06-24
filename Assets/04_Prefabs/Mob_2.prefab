@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5200036307617079465}
   - component: {fileID: -1081400081083925231}
   - component: {fileID: -3790273081788797419}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Mob_2
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -52,6 +52,7 @@ MonoBehaviour:
     monster_Speed: 50
     monster_regentime: 2
     monster_limitSpawn: 10
+    monster_reward: 1000
 --- !u!212 &5200036307617079465
 SpriteRenderer:
   m_ObjectHideFlags: 0

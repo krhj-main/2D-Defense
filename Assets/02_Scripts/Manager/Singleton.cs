@@ -11,7 +11,6 @@ using UnityEngine;
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
     // 싱글톤 이름을 가진 스크립트를 제네릭 타입으로 선언
-    
     static T instance;
     // 제네릭 타입 인스턴스 변수
 

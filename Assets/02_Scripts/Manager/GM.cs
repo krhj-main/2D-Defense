@@ -40,8 +40,12 @@ public class GM : Singleton<GM>
     /// 클릭 시 데미지, 주둔지 체력, 소지 골드, 무기 타입별 데미지
     /// 업그레이드시 증가 클릭데미지, 증가 체력, 증가 무기 데미지, 증가 가격
 
-    public int clickDmg;
-    public int postHP;
+    [HideInInspector]
+    public float postHP;
+    public float postMaxHP;
+    [HideInInspector]
+    public float postMP;
+    public float postMaxMP;
     public long haveGold;
 
 }

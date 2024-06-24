@@ -9,7 +9,12 @@ public class MonsterStat
     public float monster_HP;
     public float monster_Speed;
     public float monster_regentime;
+    public int monster_Dmg;
     public int monster_limitSpawn;
+    public int monster_reward;
+
+    [Space(15)]
+    public float monster_Range;
 }
 
 public class MobManager : Singleton<MobManager>
@@ -41,6 +46,7 @@ public class MobManager : Singleton<MobManager>
     {
         while (true)
         {
+            nextWave_BTN.interactable = false;
             if (limitSpawn <= 0)
             {
                 break;
@@ -50,6 +56,7 @@ public class MobManager : Singleton<MobManager>
 
             yield return new WaitForSeconds(regentime);
         }
+        nextWave_BTN.interactable = true;
         StopCoroutine("StartWave");
     }
 }

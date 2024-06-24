@@ -30,4 +30,9 @@ public class Monster : MonoBehaviour
         Vector2 dir = (castleT.transform.position - transform.position).normalized;
         rig.velocity = dir * MM.monster_Speed;
     }
+    private void OnDestroy()
+    {
+        GM.Instance.haveGold += MM.monster_reward;
+        UIManager.Instance.TopUIUpdate();
+    }
 }

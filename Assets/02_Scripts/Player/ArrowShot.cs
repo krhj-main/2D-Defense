@@ -37,11 +37,15 @@ public class ArrowShot : MonoBehaviour
         Arrow arrowScript = arrows.GetComponent<Arrow>();
         arrowScript.Initialize(dir);
     }
-    public void OnHitted(GameObject projectile, GameObject monster, float hp, float damage)
+    public void OnHitted(GameObject projectile, GameObject monster, float damage)
     {
         Vector2 dir = monster.transform.position - projectile.transform.position;
         monster.GetComponent<Rigidbody2D>().AddForce(dir.normalized * 50f, ForceMode2D.Impulse);
-        hp -= damage;
+        monster.GetComponent<Monster>().MM.monster_HP -= damage;
+        if(monster.GetComponent<Monster>().MM.monster_HP <= 0)
+        {
+            Destroy(monster.gameObject);
+        }
         monster.GetComponent<Monster>().Invoke("MoveAxis", 0.35f);
     }
 }

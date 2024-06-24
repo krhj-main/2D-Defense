@@ -7,6 +7,7 @@ TagManager:
   - Background
   - Muzzle
   - Monster
+  - Castle
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Monsters
   - 
   - 
   - 

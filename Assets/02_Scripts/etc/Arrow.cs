@@ -46,7 +46,8 @@ public class Arrow : MonoBehaviour
         if (collision.CompareTag("Monster"))
         {
             Destroy(gameObject);
-            arrowScript.OnHitted(gameObject, collision.gameObject, 100, Weapon_Type.damage);
+            arrowScript.OnHitted(gameObject, collision.gameObject, Weapon_Type.damage);
+            Debug.Log(collision.GetComponent<Monster>().MM.monster_HP);
             Debug.Log(Weapon_Type.damage);
         }
     }
