@@ -50,7 +50,8 @@ MonoBehaviour:
   MM:
     monster_HP: 5000
     monster_Speed: 50
-    monster_regentime: 0
+    monster_regentime: 2
+    monster_limitSpawn: 10
 --- !u!212 &5200036307617079465
 SpriteRenderer:
   m_ObjectHideFlags: 0

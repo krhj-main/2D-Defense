@@ -6,13 +6,26 @@ public class Arrow : MonoBehaviour
 {
     Vector2 velocity;
     Vector2 gravity;
-
+    ArrowShot arrowScript;
+    [SerializeField] Weapon Weapon_Type;
+    /*
     public void Initialize(Vector2 initialVelocity, Vector2 gravity)
     {
         this.velocity = initialVelocity;
         this.gravity = gravity;
 
         Destroy(this.gameObject,2f);
+    }*/
+    public void Initialize(Vector2 dir)
+    {
+        this.velocity = dir * Weapon_Type.attackSpeed;
+        this.gravity = Weapon_Type.gravity;
+
+        Destroy(this.gameObject, 2f);
+    }
+    private void Start()
+    {
+        arrowScript = GameObject.Find("@").GetComponent<ArrowShot>();    
     }
 
     // Update is called once per frame
@@ -27,5 +40,14 @@ public class Arrow : MonoBehaviour
 
         angle -= 90;
         transform.rotation = Quaternion.Euler(0,0,angle);
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Monster"))
+        {
+            Destroy(gameObject);
+            arrowScript.OnHitted(gameObject, collision.gameObject, 100, Weapon_Type.damage);
+            Debug.Log(Weapon_Type.damage);
+        }
     }
 }

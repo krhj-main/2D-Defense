@@ -15,6 +15,10 @@ public class Weapon
     public int price;
     public int damage;
     public int attackSpeed;
+    [Header("중력 가속도")]
+    [Tooltip("기본값 -9.81")]
+    public Vector2 gravity = new Vector2(0, -9.81f);
+    // 중력가속도
 }
 [System.Serializable]
 public class Splash : Weapon

@@ -170,3 +170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ce3d02b91734a747b8ecef93108a49a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Weapon_Type:
+    price: 0
+    damage: 0
+    attackSpeed: 4000
+    gravity: {x: 0, y: -1569.6}

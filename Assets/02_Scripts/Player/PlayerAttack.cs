@@ -44,11 +44,9 @@ public class PlayerAttack : MonoBehaviour
     /// <param name="damage">투사체의 공격력</param>
     public void OnHitted(GameObject projectile, GameObject monster,float hp, float damage)
     {
-        
         Vector2 dir = monster.transform.position - projectile.transform.position;
         monster.GetComponent<Rigidbody2D>().AddForce(dir.normalized * 50f,ForceMode2D.Impulse);
         hp -= damage;
         monster.GetComponent<Monster>().Invoke("MoveAxis",0.35f);
-
     }
 }

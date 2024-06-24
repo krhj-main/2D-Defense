@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ArrowShot : MonoBehaviour
 {
@@ -10,13 +11,8 @@ public class ArrowShot : MonoBehaviour
     [Header("화살 발사 위치")]
     [SerializeField] Transform muzzle;
     // 화살 발사 포인트 
-    [Header("화살 발사 속도")]
-    [SerializeField] float arrowPower;
-    // 화살 발사 힘
-    [Header("중력 가속도")]
-    [Tooltip ("기본값 -9.81")]
-    [SerializeField] Vector2 gravity = new Vector2(0,-9.81f);
-    // 중력가속도
+
+    
 
 
 
@@ -24,7 +20,7 @@ public class ArrowShot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             ShootArrow();
         }
@@ -39,6 +35,13 @@ public class ArrowShot : MonoBehaviour
         Vector2 dir = (mousePos - muzzle.position).normalized;
 
         Arrow arrowScript = arrows.GetComponent<Arrow>();
-        arrowScript.Initialize(dir * arrowPower, gravity);
+        arrowScript.Initialize(dir);
+    }
+    public void OnHitted(GameObject projectile, GameObject monster, float hp, float damage)
+    {
+        Vector2 dir = monster.transform.position - projectile.transform.position;
+        monster.GetComponent<Rigidbody2D>().AddForce(dir.normalized * 50f, ForceMode2D.Impulse);
+        hp -= damage;
+        monster.GetComponent<Monster>().Invoke("MoveAxis", 0.35f);
     }
 }
