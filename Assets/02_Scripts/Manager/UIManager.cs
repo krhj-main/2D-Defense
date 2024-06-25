@@ -12,7 +12,7 @@ public class UIManager : Singleton<UIManager>
     [Tooltip("HP ¹Ù")]
     [SerializeField] Slider hp_Slider;
     [SerializeField] TextMeshProUGUI hp_TXT;
-    [Space (10)]
+    [Space (15)]
     [Tooltip("MP ¹Ù")]
     [SerializeField] Slider mp_Slider;
     [SerializeField] TextMeshProUGUI mp_TXT;
@@ -26,7 +26,15 @@ public class UIManager : Singleton<UIManager>
     }
     private void Update()
     {
-
+        if (GM.Instance.postMP < GM.Instance.postMaxMP)
+        {
+            GM.Instance.postMP += GM.Instance.postMPRegen;
+            if(GM.Instance.postMP  >= GM.Instance.postMaxMP)
+            {
+                GM.Instance.postMP = GM.Instance.postMaxMP;
+            }
+            TopUIUpdate();
+        }
     }
     public void TopUIUpdate()
     {

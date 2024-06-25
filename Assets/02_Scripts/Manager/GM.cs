@@ -46,6 +46,9 @@ public class GM : Singleton<GM>
     [HideInInspector]
     public float postMP;
     public float postMaxMP;
+    [Tooltip("±âº» °ª : 0.01")]
+    public float postMPRegen;
+
     public long haveGold;
 
 }
