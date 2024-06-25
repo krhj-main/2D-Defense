@@ -40,12 +40,13 @@ public class ArrowShot : MonoBehaviour
     public void OnHitted(GameObject projectile, GameObject monster, float damage)
     {
         Vector2 dir = monster.transform.position - projectile.transform.position;
-        monster.GetComponent<Rigidbody2D>().AddForce(dir.normalized * 50f, ForceMode2D.Impulse);
+        //monster.GetComponent<Rigidbody2D>().AddForce(dir.normalized * 100f, ForceMode2D.Impulse);
+        monster.GetComponent<Monster>().state = State.Back;
         monster.GetComponent<Monster>().MM.monster_HP -= damage;
         if(monster.GetComponent<Monster>().MM.monster_HP <= 0)
         {
             Destroy(monster.gameObject);
         }
-        monster.GetComponent<Monster>().Invoke("MoveAxis", 0.35f);
+        //monster.GetComponent<Monster>().Invoke("MoveAxis", 0.35f);
     }
 }

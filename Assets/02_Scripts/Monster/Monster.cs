@@ -6,6 +6,7 @@ public enum State
 {
     Run,
     Attack,
+    Back,
 }
 
 public class Monster : MonoBehaviour
@@ -16,6 +17,8 @@ public class Monster : MonoBehaviour
     Transform castleT;
 
     public State state;
+
+    Coroutine knock =null;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,14 +40,41 @@ public class Monster : MonoBehaviour
                 break;
             case State.Attack:
                 break;
+            case State.Back:
+                Debug.Log($"{state}");
+                if (knock == null)
+                {
+                    knock = StartCoroutine("KnockBack", 3f);
+                }
+                break;
         }
+    }
+    private void FixedUpdate()
+    {
+        
+    }
+    IEnumerator KnockBack(float time)
+    {
+        float currentTIme = 0f;
+        Vector2 dir = (transform.position - castleT.transform.position).normalized;
+        while (currentTIme < time)
+        {
+            currentTIme += Time.deltaTime;
+            Debug.Log(time);
+            transform.Translate(dir * Time.deltaTime * 1000f);
+
+            yield return new WaitForFixedUpdate();
+        }
+        state = State.Run;
+        knock = null;
+
     }
     public void MoveAxis()
     {
         Vector2 dir = (castleT.transform.position - transform.position).normalized;
-        //rig.velocity = dir * MM.monster_Speed;
+        rig.velocity = dir * MM.monster_Speed;
 
-        transform.Translate(dir * MM.monster_Speed * Time.deltaTime);
+        //transform.Translate(dir * MM.monster_Speed * Time.deltaTime);
     }
     private void OnDestroy()
     {
