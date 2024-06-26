@@ -11,12 +11,14 @@ public enum State
 
 public class Monster : MonoBehaviour
 {
+    public State state;
     [SerializeField]    public MonsterStat MM;
+    [SerializeField ] GameObject bullet;
 
     Rigidbody2D rig;
     Transform castleT;
 
-    public State state;
+    bool isAttack;
 
     Coroutine knock =null;
     // Start is called before the first frame update
@@ -39,6 +41,7 @@ public class Monster : MonoBehaviour
                 MoveAxis();
                 break;
             case State.Attack:
+                AttackCastle();
                 break;
             case State.Back:
                 Debug.Log($"{state}");
@@ -49,10 +52,7 @@ public class Monster : MonoBehaviour
                 break;
         }
     }
-    private void FixedUpdate()
-    {
-        
-    }
+
     IEnumerator KnockBack(float time)
     {
         float currentTIme = 0f;
@@ -71,6 +71,15 @@ public class Monster : MonoBehaviour
     }
     public void MoveAxis()
     {
+        float currentDistance = Vector3.Distance(transform.position, castleT.transform.position);
+
+        if (MM.monster_Range > 0)
+        {
+            if(currentDistance < MM.monster_Range)
+            {
+                state = State.Attack;
+            }
+        }
         Vector2 dir = (castleT.transform.position - transform.position).normalized;
         rig.velocity = dir * MM.monster_Speed;
 
@@ -80,5 +89,26 @@ public class Monster : MonoBehaviour
     {
         GM.Instance.haveGold += MM.monster_reward;
         UIManager.Instance.TopUIUpdate();
+    }
+    void AttackCastle()
+    {
+        
+        rig.velocity = Vector2.zero;
+
+        Vector3 dir = (castleT.transform.position - transform.position).normalized;
+
+        if (!isAttack)
+        {
+            isAttack = true;
+            StartCoroutine("ShootBullet");
+        }        
+    }
+    IEnumerator ShootBullet()
+    {
+        Vector3 dir = (castleT.transform.position - transform.position).normalized;
+
+        GameObject monsterBullet = Instantiate(bullet, transform.position, Quaternion.Euler(castleT.transform.position - transform.position));
+        yield return new WaitForSeconds(1f);
+        isAttack = false;
     }
 }
