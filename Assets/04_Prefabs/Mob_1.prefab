@@ -50,13 +50,13 @@ MonoBehaviour:
   state: 0
   MM:
     monster_HP: 2000
-    monster_Speed: 250
+    monster_Speed: 200
     monster_regentime: 1
-    monster_Dmg: 1000
-    monster_limitSpawn: 5
+    monster_Dmg: 100
+    monster_limitSpawn: 10
     monster_reward: 500
-    monster_Range: 700
-  bullet: {fileID: 4069510969602909961, guid: bc45a1274b979444f97ebbc872d745c0, type: 3}
+    monster_Range: 0
+  bullet: {fileID: 0}
 --- !u!212 &2572949523358969402
 SpriteRenderer:
   m_ObjectHideFlags: 0

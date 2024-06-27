@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-/// 카메라 매니저
-/// 카메라 드래그 이동에 관해 포함
-/// @ 오브젝트에 붙어있음
-
+///<summary>
+///카메라 드래그 이동에 관한 스크립트 @오브젝트에 붙어있음
+///</summary>>
 
 public class CameraManager : Singleton<CameraManager>
 {
@@ -21,18 +20,22 @@ public class CameraManager : Singleton<CameraManager>
     // 카메라 이동속도 값
 
     Vector2 leftBG, rightBG;
+    // 카메라의 이동범위를 지정해주기 위해 배경의 위치값을 저장할 Vector2 변수
 
 
     // Start is called before the first frame update
     void Start()
     {
         leftBG = GameObject.Find("BG").GetComponent<BoxCollider2D>().bounds.size;
+        // 가장 좌측에 있는 배경의 사이즈값
         rightBG = GameObject.Find("BG_Copy").GetComponent<BoxCollider2D>().bounds.size;
+        // 가장 우측에 있는 배경의 사이즈값
     }
 
     // Update is called once per frame
     void Update()
     {
+        // 마우스 왼쪽버튼을 클릭, UI를 클릭하지않았을때라면
         if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             mousePos = Input.mousePosition;

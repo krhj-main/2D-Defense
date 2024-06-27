@@ -17,6 +17,9 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] Slider mp_Slider;
     [SerializeField] TextMeshProUGUI mp_TXT;
 
+    [SerializeField] TextMeshProUGUI up_Castle_TXT;
+    [SerializeField] TextMeshProUGUI up_Mana_TXT;
+
     private void Start()
     {
         GM.Instance.postHP = GM.Instance.postMaxHP;
@@ -43,5 +46,10 @@ public class UIManager : Singleton<UIManager>
         mp_TXT.text = string.Format("{0} / {1}", GM.Instance.postMP, GM.Instance.postMaxMP);
         hp_Slider.value = GM.Instance.postHP / GM.Instance.postMaxHP;
         mp_Slider.value = GM.Instance.postMP / GM.Instance.postMaxMP;
+    }
+    public void UpgradeUIUpdate()
+    {
+        up_Castle_TXT.text = string.Format("Cost : 10000\nHP + 5000\nCastle Lv : {0}",GM.Instance.upgrade_HP_Level);
+        up_Mana_TXT.text = string.Format("Cost : 2000\nMP + 1000\nMP Regen + 0.05\nMana Lv : {0}",GM.Instance.upgrade_MP_Level);
     }
 }

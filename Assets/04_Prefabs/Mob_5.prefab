@@ -47,12 +47,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b092bbf4628bea443a451e3341a0c915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
   MM:
     monster_HP: 10000
-    monster_Speed: 100
+    monster_Speed: 200
     monster_regentime: 5
+    monster_Dmg: 3000
     monster_limitSpawn: 20
     monster_reward: 5000
+    monster_Range: 0
+  bullet: {fileID: 0}
 --- !u!212 &4980348273593393871
 SpriteRenderer:
   m_ObjectHideFlags: 0

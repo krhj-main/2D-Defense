@@ -43,9 +43,11 @@ public class GM : Singleton<GM>
     [HideInInspector]
     public float postHP;
     public float postMaxHP;
+    public int upgrade_HP_Level;
     [HideInInspector]
     public float postMP;
     public float postMaxMP;
+    public int upgrade_MP_Level;
     [Tooltip("±âº» °ª : 0.01")]
     public float postMPRegen;
 
