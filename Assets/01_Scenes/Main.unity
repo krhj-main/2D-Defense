@@ -8617,7 +8617,7 @@ MonoBehaviour:
   postMaxMP: 500
   upgrade_MP_Level: 0
   postMPRegen: 0.1
-  haveGold: 1000
+  haveGold: 50000
 --- !u!114 &1490450034
 MonoBehaviour:
   m_ObjectHideFlags: 0

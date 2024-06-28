@@ -37,9 +37,9 @@ public class CastleUpgrade : MonoBehaviour
         // 만약 업그레이드 레벨이 준비된 성 업그레이드 이미지보다 많다면
         // 최대업그레이드에 도달한것으로 판단하고 레벨을 최대 업그레이드로 세팅
         // 업그레이드와 골드 연산을 하지않고 함수 탈출
-        if (GM.Instance.upgrade_HP_Level >= castleImgs.Length)
+        if (GM.Instance.upgrade_HP_Level >= castleImgs.Length-1)
         {
-            GM.Instance.upgrade_HP_Level = castleImgs.Length;
+            GM.Instance.upgrade_HP_Level = castleImgs.Length-1;
             Debug.Log("최대 업그레이드 도달");
             return;
         }
@@ -59,6 +59,7 @@ public class CastleUpgrade : MonoBehaviour
             castleImgs[i].gameObject.SetActive(i == GM.Instance.upgrade_HP_Level);
         }
         UIManager.Instance.UpgradeUIUpdate();
+        UIManager.Instance.TopUIUpdate();
         // 업그레이드칸의 UI 업데이트
     }
     void Castle_MP_UP()
@@ -76,6 +77,7 @@ public class CastleUpgrade : MonoBehaviour
         // 코스트 만큼 골드 소모, MP 업그레이드 레벨 증가, 최대 MP증가, MP리젠속도 증가
 
         UIManager.Instance.UpgradeUIUpdate();
+        UIManager.Instance.TopUIUpdate();
         // 업그레이드칸의 UI 업데이트
     }
 }
