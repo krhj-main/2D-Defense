@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 /// 무기 타입별 데미지 설정
 /// </summary>
 /// 기본 무기들에 스플래쉬, 체인(튕기는) 무기 타입
+/// 테스트 용 
 
 [System.Serializable]
 public class Weapon
